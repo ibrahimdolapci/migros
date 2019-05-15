@@ -34,7 +34,7 @@ public class Waiter
             boolean isDocumentReadyState = executor.executeScript(DOCUMENT_READY_STATE_SCRIPT).equals("complete");
 
             int i = 0;
-            while (!isDocumentReadyState && stillRunningAjax && i < 30)
+            while (!isDocumentReadyState && stillRunningAjax && i < 2)
             {
                 i++;
                 sleep(TimeUnit.SECONDS.toMillis(1L));
