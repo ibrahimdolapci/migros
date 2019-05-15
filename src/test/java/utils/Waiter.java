@@ -4,8 +4,10 @@ import org.openqa.selenium.JavascriptExecutor;
 
 import java.util.concurrent.TimeUnit;
 
-public class AjaxWaiter
+public class Waiter
 {
+    private static final int DEFAULT_SLEEP = 2000;
+
     private static final String DOCUMENT_READY_STATE_SCRIPT = "return document.readyState";
     private static final String AJAX_WAIT_SCRIPT = "return typeof jQuery != 'undefined' && jQuery.active != 0";
     private static final String ANGULAR_WAIT_SCRIPT = "return angular.element(document).injector().get('$http').pendingRequests.length != 0";
@@ -46,15 +48,20 @@ public class AjaxWaiter
 
     }
 
-    private static void sleep(long durationInMillisecond)
+    public static void sleep()
+    {
+        sleep(DEFAULT_SLEEP);
+    }
+
+    private static void sleep(long miliseconds)
     {
         try
         {
-            Thread.sleep(durationInMillisecond);
+            Thread.sleep(miliseconds);
         }
-        catch (InterruptedException e1)
+        catch (InterruptedException e)
         {
-            // noop
+            Thread.currentThread().interrupt();
         }
     }
 }

@@ -1,6 +1,7 @@
 package tests;
 
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import pages.common.MainPage;
 import pages.user.LoginPage;
@@ -11,8 +12,6 @@ public class AbstractTest
 {
     public static TestContext context = new TestContext();
     public static Browser browser = context.doCreateBrowser();
-
-    protected static final int DEFAULT_SLEEP = 2000;
 
     @BeforeClass
     public static void setUpClass()
@@ -35,28 +34,24 @@ public class AbstractTest
 
         LoginPage loginPage = new LoginPage(browser);
 
-        sleep();
         browser.waitAndSendKeys(loginPage.inputEmail, username);
         browser.waitAndSendKeys(loginPage.inputPassword, password);
 
         browser.waitAndClick(loginPage.loginButton);
-        sleep();
+
+        Assert.assertNotNull(loginPage.displayName.getText());
     }
 
-    public static void sleep()
+    public void clearBasket()
     {
-        sleep(DEFAULT_SLEEP);
-    }
+        MainPage mainPage = new MainPage(browser);
+        browser.waitAndClick(mainPage.shoppingBasketButton);
 
-    public static void sleep(int miliseconds)
-    {
-        try
+        while (browser.isElementDisplayed(mainPage.trashButton))
         {
-            Thread.sleep(miliseconds);
+            browser.waitAndClick(mainPage.trashButton);
         }
-        catch (InterruptedException e)
-        {
-            Thread.currentThread().interrupt();
-        }
+
+        browser.waitAndClick(mainPage.shoppingBasketButton);
     }
 }

@@ -20,4 +20,7 @@ public class LoginPage extends AbstractPage
 
     @FindBy(css = "#signInForm > div.register-button-container > div > div > div > button")
     public WebElement loginButton;
+
+    @FindBy(className = "display-name")
+    public WebElement displayName;
 }

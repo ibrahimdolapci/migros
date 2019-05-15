@@ -18,26 +18,36 @@ public class Browser implements WebDriver
         this.driver = driver;
     }
 
-    public void waitForAjax()
+    public void waitForLoad()
     {
-        AjaxWaiter.waitForAjaxLoad(this);
-    }
-
-    public void waitForAjaxAngular()
-    {
-        AjaxWaiter.waitForAjaxLoadAngular(this);
+        Waiter.sleep();
+        Waiter.waitForAjaxLoad(this);
+        Waiter.waitForAjaxLoadAngular(this);
     }
 
     public void waitAndClick(WebElement element)
     {
+        waitForLoad();
         element.click();
-        waitForAjax();
     }
 
     public void waitAndSendKeys(WebElement element, String key)
     {
+        waitForLoad();
         element.sendKeys(key);
-        waitForAjax();
+    }
+
+    public boolean isElementDisplayed(WebElement element)
+    {
+        try
+        {
+            waitForLoad();
+            return element.isDisplayed();
+        }
+        catch (Exception e)
+        {
+            return false;
+        }
     }
 
     //--
@@ -45,33 +55,36 @@ public class Browser implements WebDriver
     public void get(String s)
     {
         driver.get(s);
-
-        waitForAjax();
-        waitForAjaxAngular();
+        waitForLoad();
     }
 
     public String getCurrentUrl()
     {
+        waitForLoad();
         return driver.getCurrentUrl();
     }
 
     public String getTitle()
     {
+        waitForLoad();
         return driver.getTitle();
     }
 
     public List<WebElement> findElements(By by)
     {
+        waitForLoad();
         return driver.findElements(by);
     }
 
     public WebElement findElement(By by)
     {
+        waitForLoad();
         return driver.findElement(by);
     }
 
     public String getPageSource()
     {
+        waitForLoad();
         return driver.getPageSource();
     }
 
