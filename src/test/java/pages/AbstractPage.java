@@ -1,13 +1,11 @@
 package pages;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import utils.Browser;
 
 public class AbstractPage
 {
-    protected WebDriver browser;
-
-    protected AbstractPage(WebDriver browser)
+    protected AbstractPage(Browser browser)
     {
         PageFactory.initElements(browser, this);
     }

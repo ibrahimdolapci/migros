@@ -1,11 +1,11 @@
 package pages.purchase;
 
-import org.openqa.selenium.WebDriver;
 import pages.AbstractPage;
+import utils.Browser;
 
 public class BasketPage extends AbstractPage
 {
-    public BasketPage(WebDriver browser)
+    public BasketPage(Browser browser)
     {
         super(browser);
     }
