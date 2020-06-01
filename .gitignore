@@ -1,6 +1,5 @@
 HELP.md
 target/
-!**/src/main/**
 !**/src/test/**
 
 ### STS ###
@@ -30,7 +29,3 @@ build/
 ### VS Code ###
 .vscode/
 /logs/
-/ci/logs/
-/ci/target/
-/taas/logs/
-/taas/target/
