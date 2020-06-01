@@ -20,7 +20,6 @@ public class Browser implements WebDriver
 
     public void waitForLoad()
     {
-        Waiter.sleep();
         Waiter.waitForAjaxLoad(this);
         Waiter.waitForAjaxLoadAngular(this);
     }
