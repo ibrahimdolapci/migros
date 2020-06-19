@@ -45,9 +45,6 @@ public class MainPage extends AbstractPage
     @FindBy(css = ".action-td .plus-orange")
     public WebElement plusButton;
 
-    @FindBy(className = "current-category--title")
-    public WebElement currentCategoryTitle;
-
     @FindBy(linkText = "Çıkış Yap")
     public WebElement logoutButton;
 

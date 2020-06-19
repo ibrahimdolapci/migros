@@ -33,7 +33,10 @@ public class AnonymousUserBasketTest extends AnonymousUserTest {
             browser.waitAndClick(mainPage.cookieDismissButton);
         }
         browser.waitAndClick(mainPage.babyToyMenu);
-        Assert.assertEquals("Bebek, Oyuncak", mainPage.currentCategoryTitle.getText());
+
+        CategoryPage categoryPage = new CategoryPage(browser);
+
+        Assert.assertEquals("Bebek, Oyuncak", categoryPage.currentCategoryTitle.getText());
     }
 
     @Test
@@ -42,7 +45,10 @@ public class AnonymousUserBasketTest extends AnonymousUserTest {
 
         MainPage mainPage = new MainPage(browser);
         browser.waitAndClick(mainPage.diaperCategory);
-        Assert.assertEquals("Bebek Bezi", mainPage.currentCategoryTitle.getText());
+
+        CategoryPage categoryPage = new CategoryPage(browser);
+
+        Assert.assertEquals("Bebek Bezi", categoryPage.currentCategoryTitle.getText());
     }
 
     @Test
@@ -59,7 +65,7 @@ public class AnonymousUserBasketTest extends AnonymousUserTest {
     }
 
     @Test
-    public void addToBasket() throws InterruptedException {
+    public void addToBasket() {
         priceDescendentSorting();
 
         CategoryPage categoryPage = new CategoryPage(browser);
@@ -71,7 +77,7 @@ public class AnonymousUserBasketTest extends AnonymousUserTest {
     }
 
     @Test
-    public void summaryTotal() throws InterruptedException {
+    public void summaryTotal() {
         addToBasket();
 
         MainPage mainPage = new MainPage(browser);
@@ -84,12 +90,12 @@ public class AnonymousUserBasketTest extends AnonymousUserTest {
         if (browser.isElementDisplayed(basketPage.cartCampaignModal)) {
             browser.waitAndClick(basketPage.CampaignModalCloseButton);
         }
-        String basketTotal = basketPage.basketTotal.getAttribute("data-raw-amount");
+        String basketTotal = basketPage.basketTotal.getText();
 
         browser.waitAndClick(basketPage.clothBagRadioButton);
         browser.waitAndClick(basketPage.approveBasket);
 
-        String summaryTotal = basketPage.basketTotal.getAttribute("data-raw-amount");
+        String summaryTotal = basketPage.basketTotal.getText();
         Assert.assertEquals(basketTotal, summaryTotal);
     }
 }

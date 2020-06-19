@@ -26,7 +26,10 @@ public class AuthorizedUserBasketTest extends AuthorizedUserTest {
             browser.waitAndClick(mainPage.cookieDismissButton);
         }
         browser.waitAndClick(mainPage.babyToyMenu);
-        Assert.assertEquals("Bebek, Oyuncak", mainPage.currentCategoryTitle.getText());
+
+        CategoryPage categoryPage = new CategoryPage(browser);
+
+        Assert.assertEquals("Bebek, Oyuncak", categoryPage.currentCategoryTitle.getText());
     }
 
     @Test
@@ -35,7 +38,10 @@ public class AuthorizedUserBasketTest extends AuthorizedUserTest {
 
         MainPage mainPage = new MainPage(browser);
         browser.waitAndClick(mainPage.diaperCategory);
-        Assert.assertEquals("Bebek Bezi", mainPage.currentCategoryTitle.getText());
+
+        CategoryPage categoryPage = new CategoryPage(browser);
+
+        Assert.assertEquals("Bebek Bezi", categoryPage.currentCategoryTitle.getText());
     }
 
     @Test
@@ -78,12 +84,12 @@ public class AuthorizedUserBasketTest extends AuthorizedUserTest {
         if (browser.isElementDisplayed(basketPage.cartCampaignModal)) {
             browser.waitAndClick(basketPage.CampaignModalCloseButton);
         }
-        String basketTotal = basketPage.basketTotal.getAttribute("data-raw-amount");
+        String basketTotal = basketPage.basketTotal.getText();
 
         browser.waitAndClick(basketPage.clothBagRadioButton);
         browser.waitAndClick(basketPage.approveBasket);
 
-        String summaryTotal = basketPage.basketTotal.getAttribute("data-raw-amount");
+        String summaryTotal = basketPage.basketTotal.getText();
         Assert.assertEquals(basketTotal, summaryTotal);
     }
 }

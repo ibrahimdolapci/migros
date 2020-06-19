@@ -20,12 +20,12 @@ public class CategoryPage extends AbstractPage
     public WebElement getPrimaBrandFilter(){
         WebElement brands = browser.findElement(By.cssSelector(".category-sidebar > .in > .filter:nth-of-type(3) .brands-list"));
         return brands.findElement(By.xpath("//*[contains(text(), 'Prima')]"));
-    };
+    }
 
     public WebElement getBeden4Filter(){
         WebElement brands = browser.findElement(By.cssSelector(".category-sidebar > .in > .filter:nth-of-type(4) .brands-list"));
         return brands.findElement(By.xpath("//*[contains(text(), '4 Beden')]"));
-    };
+    }
 
     @FindBy(css = "#product-list-sort li[data-sort-criteria='PRICE_DESC']")
     public WebElement sortPriceDesc;
@@ -33,13 +33,15 @@ public class CategoryPage extends AbstractPage
     @FindBy(xpath = "//*[@id=\"product-list-sort\"]/nav/button")
     public WebElement othersButton;
 
-    @FindBy(css = ".sub-category-product-list .list:nth-of-type(1)")
-    public WebElement firstProduct;
+    @FindBy(css = ".sub-category-product-list .list:nth-of-type(1) .product-card-title")
+    public WebElement firstProductTitle;
 
-    public WebElement firstProductTitle = firstProduct.findElement(By.className("product-card-title"));
-
-    public WebElement firstProductAddBasketButton = firstProduct.findElement(By.className("product-card-button"));
+    @FindBy(css = ".sub-category-product-list .list:nth-of-type(1) .product-card-button")
+    public WebElement firstProductAddBasketButton;
 
     @FindBy(css = "#product-list-sort .sort-options.selected")
     public WebElement selectedSortCriteria;
+
+    @FindBy(className = "current-category--title")
+    public WebElement currentCategoryTitle;
 }
