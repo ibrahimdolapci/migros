@@ -14,3 +14,6 @@ Migros Case
 - Put your chromedriver executable file into "/opt/" directory or whereever you want
 
   System.setProperty("webdriver.chrome.driver", "/opt/chromedriver");
+  
+  Ibrahim DOLAPCI
+  150140722
