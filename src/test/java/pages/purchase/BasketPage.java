@@ -12,15 +12,18 @@ public class BasketPage extends AbstractPage
         super(browser);
     }
 
-    @FindBy(linkText = "Ürün Notu")
-    public WebElement purchaseNote;
-
-    @FindBy(className = "product_note")
-    public WebElement inputNote;
-
     @FindBy(id = "summaryRevenue")
     public WebElement basketTotal;
 
     @FindBy(id = "in-cart-next-button")
     public WebElement approveBasket;
+
+    @FindBy(id = "cartCampaignModal")
+    public WebElement cartCampaignModal;
+
+    @FindBy(css = "#cartCampaignModal button.close")
+    public WebElement CampaignModalCloseButton;
+
+    @FindBy(xpath = "//*[@id=\"cartPageBagChoiceForm\"]/div/label[2]")
+    public WebElement clothBagRadioButton;
 }

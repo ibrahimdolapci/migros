@@ -17,7 +17,7 @@ public class TestContext
     public Browser doCreateBrowser()
     {
         // Optional, if not specified, WebDriver will search your path for chromedriver.
-        System.setProperty("webdriver.chrome.driver", "/opt/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "/opt/chromedriver.exe");
 
         // initialize webdriver
         WebDriver driver = new ChromeDriver();

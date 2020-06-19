@@ -12,15 +12,24 @@ public class LoginPage extends AbstractPage
         super(browser);
     }
 
-    @FindBy(css = "#signInForm > div.form-part.email-part > label > input[type=email]")
-    public WebElement inputEmail;
+    @FindBy(id = "phoneNumber")
+    public WebElement inputPhone;
 
-    @FindBy(css = "#signInForm > div.form-part.password-part > label > input[type=password]")
-    public WebElement inputPassword;
+    @FindBy(id = "phoneNumberToVerify")
+    public WebElement inputVerifyPhone;
 
-    @FindBy(css = "#signInForm > div.register-button-container > div > div > div > button")
+    @FindBy(id = "membership-modal-login-button")
     public WebElement loginButton;
+
+    @FindBy(id = "verifyOtpButton")
+    public WebElement verifyOtpButton;
 
     @FindBy(className = "display-name")
     public WebElement displayName;
+
+    @FindBy(id = "otp-error-message")
+    public WebElement otpErrorMessage;
+
+    @FindBy(css = "#otp-modal .modal-header button.close")
+    public WebElement closePopupButton;
 }

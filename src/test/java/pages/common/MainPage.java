@@ -12,17 +12,32 @@ public class MainPage extends AbstractPage
         super(browser);
     }
 
-    @FindBy(id = "membership-login-link")
+    @FindBy(css = ".header-sticky-register-login .header-sticky-register-login--list-item:last-child")
     public WebElement loginButton;
 
-    @FindBy(linkText = "Et, Balık, Kümes")
-    public WebElement meatFishChichkenMenu;
+    @FindBy(linkText = "Bebek, Oyuncak")
+    public WebElement babyToyMenu;
 
-    @FindBy(css = "a[data-monitor-ga-action='Kırmızı Et']")
-    public WebElement meatCategory;
+    @FindBy(css = "a[data-monitor-ga-action='Bebek Bezi']")
+    public WebElement diaperCategory;
 
     @FindBy(css = ".shoping-cart-icon-block .fa-shopping-cart")
     public WebElement shoppingBasketButton;
+
+    @FindBy(xpath = "//*[@id=\"cart-bar\"]/div/div/div/div/h3")
+    public WebElement emptyBasketText;
+
+    @FindBy(className = "rubbish")
+    public WebElement trashButton;
+
+    @FindBy(className = "go-to-basket-button")
+    public WebElement goToBasketButton;
+
+    @FindBy(css = "#deliveryFromStoreAnnouncement button[aria-label='Close']")
+    public WebElement closeStoreAnnouncementButton;
+
+    @FindBy(css = "#membership-modal button.close")
+    public WebElement closePopupButton;
 
     @FindBy(className = "progress-bar-text")
     public WebElement progressBarText;
@@ -30,9 +45,15 @@ public class MainPage extends AbstractPage
     @FindBy(css = ".action-td .plus-orange")
     public WebElement plusButton;
 
-    @FindBy(className = "rubbish")
-    public WebElement trashButton;
+    @FindBy(className = "current-category--title")
+    public WebElement currentCategoryTitle;
 
-    @FindBy(className = "go-to-basket-button")
-    public WebElement goToBasketButton;
+    @FindBy(linkText = "Çıkış Yap")
+    public WebElement logoutButton;
+
+    @FindBy(css = "#cart-bar td.title")
+    public WebElement addedCartItem;
+
+    @FindBy(className = "cookie-popup-dismiss")
+    public WebElement cookieDismissButton;
 }
